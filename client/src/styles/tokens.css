@@ -1,55 +1,45 @@
 /**
- * Design tokens — Harshitha Portfolio
- * Canonical source per docs/program/DESIGN_SYSTEM.md
- *
- * Fonts: Fraunces (display) + Figtree (body)
- * Accent: forest teal — light-first, optional html.dark
+ * CampusHub — UI_IDENTITIES.md §4
+ * Energetic campus social: Syne + Figtree, rose #e11d48, ice blue support
  */
 
 :root {
-  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-display: "Syne", "Segoe UI", sans-serif;
   --font-body: "Figtree", "Segoe UI", sans-serif;
 
-  /* Surfaces — cool sage mist (not cream) */
-  --hp-bg: #f4f7f5;
-  --hp-surface: #ffffff;
-  --bg-muted: #e8efe9;
+  --ch-bg: #eef6ff;
+  --ch-surface: #ffffff;
+  --bg-muted: #e4eef9;
 
-  /* Text */
-  --hp-ink: #14201c;
-  --hp-muted: #5a6b64;
-  --ink-faint: #8b9b94;
+  --ch-ink: #132033;
+  --ch-muted: #5a6f86;
+  --ink-faint: #8aa0b5;
 
-  /* Accent — forest teal */
-  --hp-accent: #1a6b58;
-  --hp-accent-hover: #145546;
-  --hp-accent-soft: #dceee8;
+  --ch-accent: #e11d48;
+  --ch-accent-hover: #be123c;
+  --ch-accent-soft: #ffe4e6;
+  --ch-secondary: #0284c8;
+  --ch-secondary-soft: #e0f2fe;
 
-  /* Semantic */
-  --hp-border: #d5e0db;
-  --hp-footer: #0f1a16;
+  --ch-border: #cfe0f2;
+  --ch-footer: #132033;
   --danger: #b91c1c;
-  --success: #047857;
-  --warning: #b45309;
+  --success: #15803d;
+  --warning: #a16207;
 
-  /* Charts */
-  --chart-1: #1a6b58;
-  --chart-2: #1d4ed8;
-  --chart-3: #0369a1;
-  --chart-4: #4b5563;
-
-  --radius: 0.5rem;
-  --radius-sm: 6px;
-  --shadow-soft: 0 1px 2px rgb(20 32 28 / 0.04), 0 8px 24px rgb(20 32 28 / 0.06);
-  --ring: 0 0 0 3px rgb(26 107 88 / 0.35);
+  --radius: 0.75rem;
+  --radius-sm: 0.5rem;
+  --shadow-soft: 0 10px 28px rgb(19 32 51 / 0.08);
+  --shadow-lift: 0 14px 36px rgb(19 32 51 / 0.14), 0 0 0 1px rgb(225 29 72 / 0.18);
+  --ring: 0 0 0 3px rgb(225 29 72 / 0.35);
 
   --bg-atmosphere:
-    radial-gradient(ellipse 80% 50% at 10% -10%, #dceee8 0%, transparent 55%),
-    radial-gradient(ellipse 60% 40% at 100% 0%, #e8efe9 0%, transparent 50%),
-    linear-gradient(180deg, #f4f7f5 0%, #eef2f0 100%);
+    radial-gradient(ellipse 60% 40% at 0% 0%, #ffe4e6 0%, transparent 55%),
+    radial-gradient(ellipse 50% 35% at 100% 10%, #cfe0f2 0%, transparent 50%),
+    linear-gradient(180deg, #eef6ff 0%, #e4eef9 100%);
 
-  --nav-h: 4rem;
-  --max-w: 68rem;
+  --nav-h: 3.25rem;
+  --max-w: 72rem;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 
   --text-xs: 0.75rem;
@@ -57,62 +47,45 @@
   --text-base: 1rem;
   --text-lg: 1.125rem;
   --text-xl: 1.25rem;
-  --text-2xl: 1.75rem;
-  --text-3xl: 2.25rem;
-  --text-hero: clamp(2.25rem, 5vw, 3.25rem);
+  --text-2xl: 1.5rem;
+  --text-3xl: 2rem;
+  --text-hero: clamp(1.85rem, 4vw, 2.6rem);
 
-  --space-1: 4px;
-  --space-2: 8px;
-  --space-3: 12px;
-  --space-4: 16px;
-  --space-5: 24px;
-  --space-6: 32px;
-  --space-7: 48px;
-  --space-8: 64px;
-
-  --color-bg: var(--hp-bg);
-  --color-surface: var(--hp-surface);
-  --color-ink: var(--hp-ink);
-  --color-muted: var(--hp-muted);
-  --color-accent: var(--hp-accent);
-  --color-accent-hover: var(--hp-accent-hover);
-  --color-accent-soft: var(--hp-accent-soft);
-  --color-border: var(--hp-border);
-  --color-footer: var(--hp-footer);
-}
-
-html.dark {
-  --hp-bg: #0f1614;
-  --hp-surface: #1a2420;
-  --bg-muted: #16241f;
-  --hp-ink: #e8eeeb;
-  --hp-muted: #9aaba3;
-  --ink-faint: #6b7c74;
-  --hp-accent: #3dba9a;
-  --hp-accent-hover: #5ecfb0;
-  --hp-accent-soft: #1a332c;
-  --hp-border: #2a3a34;
-  --hp-footer: #0a100e;
-  --ring: 0 0 0 3px rgb(61 186 154 / 0.4);
-
-  --bg-atmosphere:
-    radial-gradient(ellipse 70% 45% at 0% 0%, #1a332c 0%, transparent 55%),
-    radial-gradient(ellipse 50% 35% at 100% 10%, #16241f 0%, transparent 50%),
-    linear-gradient(180deg, #0f1614 0%, #121a17 100%);
-
-  --shadow-soft: 0 1px 2px rgb(0 0 0 / 0.3), 0 8px 24px rgb(0 0 0 / 0.35);
+  --color-bg: var(--ch-bg);
+  --color-surface: var(--ch-surface);
+  --color-ink: var(--ch-ink);
+  --color-muted: var(--ch-muted);
+  --color-accent: var(--ch-accent);
+  --color-accent-hover: var(--ch-accent-hover);
+  --color-accent-soft: var(--ch-accent-soft);
+  --color-secondary: var(--ch-secondary);
+  --color-secondary-soft: var(--ch-secondary-soft);
+  --color-border: var(--ch-border);
+  --color-footer: var(--ch-footer);
 }
 
 @theme inline {
-  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-display: "Syne", "Segoe UI", sans-serif;
   --font-body: "Figtree", "Segoe UI", sans-serif;
-  --color-bg: var(--hp-bg);
-  --color-surface: var(--hp-surface);
-  --color-ink: var(--hp-ink);
-  --color-muted: var(--hp-muted);
-  --color-accent: var(--hp-accent);
-  --color-accent-hover: var(--hp-accent-hover);
-  --color-accent-soft: var(--hp-accent-soft);
-  --color-border: var(--hp-border);
-  --color-footer: var(--hp-footer);
+  --color-bg: var(--ch-bg);
+  --color-surface: var(--ch-surface);
+  --color-ink: var(--ch-ink);
+  --color-muted: var(--ch-muted);
+  --color-accent: var(--ch-accent);
+  --color-accent-hover: var(--ch-accent-hover);
+  --color-accent-soft: var(--ch-accent-soft);
+  --color-secondary: var(--ch-secondary);
+  --color-secondary-soft: var(--ch-secondary-soft);
+  --color-border: var(--ch-border);
+  --color-footer: var(--ch-footer);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
