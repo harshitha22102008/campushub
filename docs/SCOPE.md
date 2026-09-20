@@ -1,21 +1,23 @@
 # CampusHub — MVP Scope
 
 ## Purpose
-A student-facing campus platform for discovering clubs, managing a profile, and registering for events.
+A student campus platform for clubs and events — auth, membership, and a clear User–Club–Event relationship.
 
 ## Stack (planned)
-React frontend + Express API + database
+React + TypeScript + Express + Prisma/SQLite (program locked stack)
 
 ## MVP features
-- Authentication (sign up / sign in)
-- Student profile (basic info, edit)
-- Clubs list and join/leave
-- Events: create and register
-- Search across clubs and events
+- Authentication (register / login)
+- Browse and create clubs (creator = club admin)
+- Create and join events under a club
+- List “my clubs” and “my events”
+- Basic student profile
 
 ## Out of scope for MVP
-- Full messaging / chat
+- Full messaging / chat / DMs
+- Campus-wide search beyond simple browse/filter
 - Admin moderation console
-- Push notifications
+- Push notifications / email invites
+- File uploads / RSVP waitlists
 
 **Status:** Scaffold — implementation pending
