@@ -20,4 +20,4 @@ React + TypeScript + Express + Prisma/SQLite (program locked stack)
 - Push notifications / email invites
 - File uploads / RSVP waitlists
 
-**Status:** Scaffold — implementation pending
+**Status:** In progress — auth + schema landed; clubs/events CRUD next
