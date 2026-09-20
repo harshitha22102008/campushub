@@ -1,0 +1,91 @@
+// CampusHub MVP models — User, Club, membership roles, Event, joins
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String           @id @default(cuid())
+  email        String           @unique
+  passwordHash String
+  name         String?
+  /// Short student bio for basic profile
+  bio          String?
+  /// Optional major / program label
+  major        String?
+  createdAt    DateTime         @default(now())
+  updatedAt    DateTime         @updatedAt
+  clubsCreated Club[]           @relation("ClubCreator")
+  memberships  ClubMembership[]
+  eventsCreated Event[]         @relation("EventCreator")
+  eventJoins   EventJoin[]
+}
+
+model Club {
+  id          String           @id @default(cuid())
+  name        String
+  description String?
+  /// User who created the club (also becomes club admin via membership)
+  creatorId   String
+  creator     User             @relation("ClubCreator", fields: [creatorId], references: [id], onDelete: Cascade)
+  memberships ClubMembership[]
+  events      Event[]
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+
+  @@index([creatorId])
+}
+
+/// Club membership with role: "admin" | "member"
+model ClubMembership {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  clubId    String
+  club      Club     @relation(fields: [clubId], references: [id], onDelete: Cascade)
+  /// "admin" | "member"
+  role      String   @default("member")
+  createdAt DateTime @default(now())
+
+  @@unique([userId, clubId])
+  @@index([clubId])
+  @@index([userId])
+}
+
+model Event {
+  id          String      @id @default(cuid())
+  title       String
+  description String?
+  /// When the event starts
+  startsAt    DateTime
+  location    String?
+  clubId      String
+  club        Club        @relation(fields: [clubId], references: [id], onDelete: Cascade)
+  createdById String
+  createdBy   User        @relation("EventCreator", fields: [createdById], references: [id], onDelete: Cascade)
+  joins       EventJoin[]
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  @@index([clubId])
+  @@index([createdById])
+  @@index([startsAt])
+}
+
+/// Student joining / registering for an event
+model EventJoin {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  eventId   String
+  event     Event    @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@unique([userId, eventId])
+  @@index([eventId])
+  @@index([userId])
+}
