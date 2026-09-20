@@ -75,3 +75,14 @@ export async function apiPatch<T>(
   });
   return handleResponse<T>(res, auth);
 }
+
+
+export async function apiDelete<T>(path: string, auth = false): Promise<T> {
+  const headers: HeadersInit = {};
+  if (auth) {
+    const token = getToken();
+    if (token) (headers as Record<string, string>).Authorization = `Bearer ${token}`;
+  }
+  const res = await fetch(`${API_BASE}${path}`, { method: "DELETE", headers });
+  return handleResponse<T>(res, auth);
+}
