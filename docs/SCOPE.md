@@ -6,6 +6,9 @@ A student campus platform for clubs and events — auth, membership, and a clear
 ## Stack (planned)
 React + TypeScript + Express + Prisma/SQLite (program locked stack)
 
+## UI identity
+Per `UI_IDENTITIES.md` §4: Syne + Figtree, rose `#e11d48`, ice blue support, packed event grid. No forest teal.
+
 ## MVP features
 - Authentication (register / login)
 - Browse and create clubs (creator = club admin)
@@ -20,4 +23,4 @@ React + TypeScript + Express + Prisma/SQLite (program locked stack)
 - Push notifications / email invites
 - File uploads / RSVP waitlists
 
-**Status:** In progress — auth + schema landed; clubs/events CRUD next
+**Status:** MVP complete

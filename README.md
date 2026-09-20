@@ -1,10 +1,11 @@
 # CampusHub
 
-> Student campus platform for clubs and events — auth, membership, and User–Club–Event relationships.
+> Student campus platform for clubs and events — auth, membership roles, and User–Club–Event relationships.
 
 **Author:** Harshitha  
 **Stack:** React · TypeScript · Vite · Tailwind · Node/Express · Prisma · SQLite · JWT  
-**Status:** In progress
+**Status:** MVP complete  
+**Identity:** Syne + Figtree · rose `#e11d48` · ice blue support · packed event grid ([UI_IDENTITIES.md](../harshitha-portfolio/docs/program/UI_IDENTITIES.md) §4)
 
 ## Problem
 
@@ -17,9 +18,9 @@ Learn roles (member vs club-admin), multi-entity relations (User–Club–Event)
 ## Features (MVP)
 
 - [x] Authentication (register / login)
-- [ ] Browse and create clubs (creator = club admin)
-- [ ] Create and join events under a club
-- [ ] List “my clubs” and “my events”
+- [x] Browse and create clubs (creator = club admin)
+- [x] Create and join events under a club
+- [x] List “my clubs” and “my events”
 - [x] Basic student profile
 
 ## Features (Future)
@@ -35,7 +36,6 @@ Learn roles (member vs club-admin), multi-entity relations (User–Club–Event)
 client (React) --JWT--> server (Express) --> Prisma --> SQLite
 ```
 
-
 ## APIs
 
 | Method | Path | Auth | Description |
@@ -45,6 +45,16 @@ client (React) --JWT--> server (Express) --> Prisma --> SQLite
 | POST | /api/auth/login | No | Login, return JWT |
 | GET | /api/auth/me | Yes | Current user |
 | PATCH | /api/auth/me | Yes | Update name / bio / major |
+| GET | /api/clubs | Yes | Browse clubs |
+| GET | /api/clubs/mine | Yes | Clubs you belong to |
+| POST | /api/clubs | Yes | Create club (you become admin) |
+| POST | /api/clubs/:id/join | Yes | Join as member |
+| POST | /api/clubs/:id/leave | Yes | Leave club |
+| GET | /api/events | Yes | Upcoming events feed |
+| GET | /api/events/mine | Yes | Events you registered for |
+| POST | /api/events | Yes | Create event (club admin) |
+| POST | /api/events/:id/join | Yes | RSVP / register |
+| POST | /api/events/:id/leave | Yes | Unregister |
 
 ## Database
 
@@ -67,26 +77,33 @@ client (React) --JWT--> server (Express) --> Prisma --> SQLite
 npm run install:all
 ```
 
-### Server
+### Env
+
+```bash
+cp server/.env.example server/.env
+cp client/.env.example client/.env
+```
+
+### Database + seed
 
 ```bash
 cd server
-cp .env.example .env
 npx prisma migrate dev
-npm run dev
+npm run prisma:seed
 ```
 
-### Client
+Demo login: `demo@campushub.local` / `demo1234`
+
+### Run
+
+From repo root:
 
 ```bash
-cd client
-cp .env.example .env
 npm run dev
 ```
 
-Or from root: `npm run dev` (runs both).
-
-Open http://localhost:5173.
+- Client: http://localhost:5173  
+- API: http://localhost:5000  
 
 ## Repo
 
