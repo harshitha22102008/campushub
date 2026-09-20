@@ -16,11 +16,11 @@ Learn roles (member vs club-admin), multi-entity relations (User–Club–Event)
 
 ## Features (MVP)
 
-- [ ] Authentication (register / login)
+- [x] Authentication (register / login)
 - [ ] Browse and create clubs (creator = club admin)
 - [ ] Create and join events under a club
 - [ ] List “my clubs” and “my events”
-- [ ] Basic student profile
+- [x] Basic student profile
 
 ## Features (Future)
 
@@ -34,6 +34,25 @@ Learn roles (member vs club-admin), multi-entity relations (User–Club–Event)
 ```
 client (React) --JWT--> server (Express) --> Prisma --> SQLite
 ```
+
+
+## APIs
+
+| Method | Path | Auth | Description |
+|---|---|---|---|
+| GET | /api/health | No | Health check |
+| POST | /api/auth/register | No | Create account, return JWT |
+| POST | /api/auth/login | No | Login, return JWT |
+| GET | /api/auth/me | Yes | Current user |
+| PATCH | /api/auth/me | Yes | Update name / bio / major |
+
+## Database
+
+- User — email, passwordHash, name, bio, major
+- Club — name, description, creatorId
+- ClubMembership — userId, clubId, role (`admin` \| `member`)
+- Event — title, description, startsAt, location, clubId, createdById
+- EventJoin — userId, eventId
 
 ## Setup (local)
 
