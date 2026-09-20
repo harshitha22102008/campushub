@@ -1,7 +1,74 @@
 # CampusHub
 
-Campus clubs and events hub for students — discover clubs, join communities, and register for campus events.
+> Student campus platform for clubs and events — auth, membership, and User–Club–Event relationships.
 
-**Status:** Scaffold — implementation pending
+**Author:** Harshitha  
+**Stack:** React · TypeScript · Vite · Tailwind · Node/Express · Prisma · SQLite · JWT  
+**Status:** In progress
 
-A full README will follow the program template once implementation begins. Design system guidance lives in the portfolio repo docs.
+## Problem
+
+Students need a simple place to discover campus clubs, join communities, and sign up for club events without juggling chat groups and spreadsheets.
+
+## Why this project
+
+Learn roles (member vs club-admin), multi-entity relations (User–Club–Event), and protected routes on the program’s locked full-stack.
+
+## Features (MVP)
+
+- [ ] Authentication (register / login)
+- [ ] Browse and create clubs (creator = club admin)
+- [ ] Create and join events under a club
+- [ ] List “my clubs” and “my events”
+- [ ] Basic student profile
+
+## Features (Future)
+
+- Messaging / DMs
+- Admin moderation console
+- Push notifications / email invites
+- File uploads / RSVP waitlists
+
+## Architecture
+
+```
+client (React) --JWT--> server (Express) --> Prisma --> SQLite
+```
+
+## Setup (local)
+
+### Prerequisites
+
+- Node.js 20+
+- npm
+
+### Install
+
+```bash
+npm run install:all
+```
+
+### Server
+
+```bash
+cd server
+cp .env.example .env
+npx prisma migrate dev
+npm run dev
+```
+
+### Client
+
+```bash
+cd client
+cp .env.example .env
+npm run dev
+```
+
+Or from root: `npm run dev` (runs both).
+
+Open http://localhost:5173.
+
+## Repo
+
+- GitHub: https://github.com/harshitha22102008/campushub
